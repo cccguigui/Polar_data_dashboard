@@ -8,8 +8,8 @@ Created on Fri Aug  8 14:04:53 2025
 
 import streamlit as st
 import datetime
-from polar_station_tab import polar_station_tab
-from company_station_tab import company_station_tab
+from .polar_station_tab import polar_station_tab
+from .company_station_tab import company_station_tab
 
 def main():
     current_date = datetime.datetime.now()
