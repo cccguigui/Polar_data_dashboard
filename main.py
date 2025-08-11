@@ -6,11 +6,14 @@ Created on Fri Aug  8 14:04:53 2025
 @email：cjw0206@foxmail.com
 """
 import os
-os.chdir(os.path.dirname(os.path.abspath(__file__)))
 import streamlit as st
+st.write("当前目录:", os.getcwd())
+st.write("文件列表:", os.listdir())
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+
 import datetime
-from .polar_station_tab import polar_station_tab
-from .company_station_tab import company_station_tab
+from polar_station_tab import polar_station_tab
+from company_station_tab import company_station_tab
 
 def main():
     current_date = datetime.datetime.now()
