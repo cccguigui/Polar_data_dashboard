@@ -8,8 +8,7 @@ Created on Fri Aug  8 14:04:53 2025
 import os
 import streamlit as st
 st.write("当前目录:", os.getcwd())
-st.write("文件列表:", os.listdir())
-os.chdir(os.path.dirname(os.path.abspath(__file__)))
+os.chdir(os.getcwd())
 
 import datetime
 from polar_station_tab import polar_station_tab
