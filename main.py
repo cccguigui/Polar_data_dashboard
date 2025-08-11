@@ -5,7 +5,8 @@ Created on Fri Aug  8 14:04:53 2025
 @author: Chu Jiawen
 @email：cjw0206@foxmail.com
 """
-
+import os
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
 import streamlit as st
 import datetime
 from .polar_station_tab import polar_station_tab
