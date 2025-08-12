@@ -15,7 +15,7 @@ plt.rcParams['font.sans-serif'] = ['SimHei']  # 用来正常显示中文标签
 plt.rcParams['axes.unicode_minus'] = False    # 用来正常显示负号
 
 def  draw_countourf(hemisphere):
-    file = xr.open_mfdataset(r"D:\era5\*.nc")
+    file = xr.open_mfdataset(r".\station\wind_temperature.nc")
     if hemisphere == '南极':
         lat_slice = slice(-90, -60)
     else:
@@ -26,36 +26,36 @@ def  draw_countourf(hemisphere):
         print(choice)
         if choice == None:
             return
-        if choice[-2:] == '温度':
-            skt = file['skt']
-            arctic_skt = skt.sel(lat=lat_slice) - 273.15 # K转℃
+        elif choice == '平均温度':
+            data = file['mean_skt'].sel(lat=lat_slice)
             vmin = -90
             vmax = 10
             interval = 10
             cmap=plt.cm.Blues_r
-        elif choice[-2:] == '风速':
-            u10 = file['u10']
-            v10 = file['v10']
-            wind = (u10**2+v10**2)**0.5
-            arctic_skt = wind.sel(lat=lat_slice)
+        elif choice == '最低温度':
+            data = file['min_skt'].sel(lat=lat_slice)
+            vmin = -90
+            vmax = 10
+            interval = 10
+            cmap=plt.cm.Blues_r
+        elif choice == '平均风速':
+            data = file['mean_wind'].sel(lat=lat_slice)
             vmin = 0
             vmax = 50
             interval = 10
             cmap=plt.cm.Reds
-
-        
-        if choice[:1]=='平均':
-            mean_skt = arctic_skt.mean(dim='time') 
-        elif choice[:1]=='最低':
-            mean_skt = arctic_skt.min(dim='time')
-        else:
-            mean_skt = arctic_skt.max(dim='time')
+        elif choice == '最大风速':
+            data = file['max_wind'].sel(lat=lat_slice)
+            vmin = 0
+            vmax = 50
+            interval = 10
+            cmap=plt.cm.Reds
             
         fig, ax = draw_map_base(hemisphere,f_color = True)
         title=hemisphere+choice+"分布图"
         mesh, cbar = update_variable_field(
             ax=ax,
-            data=mean_skt,
+            data=data,
             cbar_label='Skin Temperature (°C)',
             hemisphere='south',
             cmap=cmap,
