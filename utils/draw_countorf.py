@@ -15,7 +15,7 @@ plt.rcParams['font.sans-serif'] = ['SimHei']  # 用来正常显示中文标签
 plt.rcParams['axes.unicode_minus'] = False    # 用来正常显示负号
 
 def  draw_countourf(hemisphere):
-    file = xr.open_mfdataset(r".\station\wind_temperature.nc")
+    file = xr.open_mfdataset(r"..\station\wind_temperature.nc")
     if hemisphere == '南极':
         lat_slice = slice(-90, -60)
     else:
@@ -69,4 +69,5 @@ def  draw_countourf(hemisphere):
 
     
     
+
     
