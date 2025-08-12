@@ -1,9 +1,10 @@
-Cartopy==0.22.0
-matplotlib==3.8.0
-numpy==1.26.0
+Cartopy
+matplotlib
+numpy
 pandas==2.0.3
 plotly==5.9.0
 streamlit==1.47.0
 xarray==2023.6.0
+
 
 
