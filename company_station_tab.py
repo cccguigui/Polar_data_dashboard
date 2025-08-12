@@ -17,7 +17,8 @@ from utils.render_plots import render_plots
 def company_station_tab(current_date: datetime.datetime):
     st.title("公司极地数据看板")
     path = './station/公司站点数据'
-    if os.listdir(path):
+    subfolder = [item for item in os.listdir(path) if os.path.isdir(os.path.join(path,item))]
+    if subfolder:
         option = st.radio("选择数据类型：", os.listdir(path), horizontal=True)
     else:
         st.info("当前无公司数据")
