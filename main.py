@@ -5,11 +5,8 @@ Created on Fri Aug  8 14:04:53 2025
 @author: Chu Jiawen
 @email：cjw0206@foxmail.com
 """
-import os
-import streamlit as st
-st.write("当前目录:", os.getcwd())
-os.chdir(os.getcwd())
 
+import streamlit as st
 import datetime
 from polar_station_tab import polar_station_tab
 from company_station_tab import company_station_tab
