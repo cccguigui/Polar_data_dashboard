@@ -7,7 +7,7 @@ Created on Fri Aug  8 15:35:08 2025
 """
 import streamlit as st
 import matplotlib.pyplot as plt
-import xarray as xr
+import pandas as pd
 from utils.draw_map_base import draw_map_base
 from utils.update_variable_field import update_variable_field
 
@@ -15,12 +15,11 @@ plt.rcParams['font.sans-serif'] = ['SimHei']  # 用来正常显示中文标签
 plt.rcParams['axes.unicode_minus'] = False    # 用来正常显示负号
 
 def  draw_countourf(hemisphere):
-    file = xr.open_dataset("./station/wind_temperature.nc")
+    file = pd.read_csv('./station/wind_temperature.csv').set_index(['lat','lon']).to_xarray()
     if hemisphere == '南极':
         lat_slice = slice(-90, -60)
     else:
         lat_slice = slice(60, 90)
-    
     with st.expander("查看温度/风速分布"):
         choice = st.selectbox("选择查看图形", options=['平均温度','最低温度','平均风速','最大风速'],index=None)
         print(choice)
@@ -65,12 +64,9 @@ def  draw_countourf(hemisphere):
             title=title
         )
         fig.tight_layout()
+    
         st.pyplot(fig)
 
     
     
-
     
-
-
-
