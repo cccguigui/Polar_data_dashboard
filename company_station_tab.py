@@ -17,7 +17,11 @@ from utils.render_plots import render_plots
 def company_station_tab(current_date: datetime.datetime):
     st.title("公司极地数据看板")
     path = './station/公司站点数据'
-    option = st.radio("选择数据类型：", os.listdir(path), horizontal=True)
+    if os.listdir(path):
+        option = st.radio("选择数据类型：", os.listdir(path), horizontal=True)
+    else:
+        st.info("当前无公司数据")
+        return
     
     data_type = st.selectbox("请选择时间粒度", ("逐小时数据", "月平均"), index=0)
     df, start_time, end_time = process_company_data(option)
