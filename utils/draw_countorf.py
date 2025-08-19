@@ -14,8 +14,7 @@ from utils.draw_map_base import draw_map_base
 from utils.update_variable_field import update_variable_field
    
 # 设置中文字体支持
-# mpl.font_manager.fontManager.addfont('./fontstyle/SimHei.ttf')
-# plt.rcParams['font.sans-serif'] = ['SimHei']  # 正常显示中文
+
 plt.rcParams['font.family'] = ['Microsoft YaHei', 'SimHei', 'SimSun'] 
 plt.rcParams['axes.unicode_minus'] = False    # 正常显示负号
 
