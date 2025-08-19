@@ -12,6 +12,12 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from utils.draw_map_base import draw_map_base
 from utils.update_variable_field import update_variable_field
+   
+# 设置中文字体支持
+mpl.font_manager.fontManager.addfont('./fontstyle/SimHei.ttf')
+plt.rcParams['font.sans-serif'] = ['SimHei']  # 正常显示中文
+plt.rcParams['axes.unicode_minus'] = False    # 正常显示负号
+
 
 def draw_countourf(hemisphere):
     """
@@ -19,10 +25,6 @@ def draw_countourf(hemisphere):
     参数:
         hemisphere (str): 半球类型 ('南极' 或 '北极')
     """
-    # 设置中文字体支持
-    mpl.font_manager.fontManager.addfont('./fontstyle/SimHei.ttf')
-    plt.rcParams['font.sans-serif'] = ['SimHei']  # 正常显示中文
-    plt.rcParams['axes.unicode_minus'] = False    # 正常显示负号
     
     # 读取风温数据并转换为xarray格式
     file = pd.read_csv('./station/wind_temperature.csv').set_index(['lat','lon']).to_xarray()
