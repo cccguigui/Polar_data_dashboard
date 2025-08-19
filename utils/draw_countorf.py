@@ -7,6 +7,7 @@ Created on Fri Aug  8 15:35:08 2025
 @email：cjw0206@foxmail.com
 """
 import streamlit as st
+import matplotlib as mpl
 import matplotlib.pyplot as plt
 import pandas as pd
 from utils.draw_map_base import draw_map_base
@@ -19,6 +20,7 @@ def draw_countourf(hemisphere):
         hemisphere (str): 半球类型 ('南极' 或 '北极')
     """
     # 设置中文字体支持
+    mpl.font_manager.fontManager.addfont('./fontstyle/SimHei.ttf')
     plt.rcParams['font.sans-serif'] = ['SimHei']  # 正常显示中文
     plt.rcParams['axes.unicode_minus'] = False    # 正常显示负号
     
